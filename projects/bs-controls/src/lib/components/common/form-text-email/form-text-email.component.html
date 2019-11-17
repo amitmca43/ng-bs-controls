@@ -1,0 +1,17 @@
+<div [class]="groupClass">
+  <label [class]="labelClass" [for]="name"><i *ngIf="isRequired" class="fas fa-asterisk fa-xs" style="color:red"></i> {{formLabel}}</label>
+  <div [class]="eleClass">
+    <input type="email" class="form-control" #emailCtrl 
+      [name]="name" [id]="name" [value]="value" [required]="isRequired" 
+      [attr.placeholder]="placeholder" [attr.maxlength]="maxLength"      
+      (blur)="onBlur($event)" (change)="onChange($event)" (keyup)="onChange($event)" />
+    <div *ngIf="isRequired && touchedInput">
+      <div *ngIf="isRequired && !validInput" class="form-validation">
+        <i class="fas fa-exclamation-triangle fa-lg"></i> {{formLabel}} is required and/or an invalid email
+      </div>
+    </div>
+    <div *ngIf="!isRequired && !validInput" class="form-validation">
+      <i class="fas fa-exclamation-triangle fa-lg"></i> {{formLabel}} is an invalid email
+    </div>
+  </div>
+</div>

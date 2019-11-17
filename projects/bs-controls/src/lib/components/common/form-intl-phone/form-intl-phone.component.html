@@ -1,0 +1,40 @@
+<div [class]="groupClass">
+    <form #f="ngForm" [formGroup]="phoneForm" style="width: 100%">
+      <div [class]="groupClass">
+        <label [class]="labelClass" [for]="name">
+          <em
+            *ngIf="isRequired"
+            class="fas fa-asterisk fa-xs"
+            style="color:red"
+          ></em>
+          {{ formLabel }}
+        </label>
+        <div [class]="eleClass">
+          <ngx-intl-tel-input
+            [enablePlaceholder]="false"
+            [preferredCountries]="preferredCountries"
+            [enableAutoCountrySelect]="false"
+            [searchCountryFlag]="true"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="selectedCountryISO"
+            [maxLength]="15"
+            [tooltipField]="TooltipLabel.Name"
+            [phoneValidation]="true"
+            [separateDialCode]="separateDialCode"
+            [formControlName]="name"
+            [required]="isRequired"
+          >
+          </ngx-intl-tel-input>
+          <div *ngIf="isRequiredError()" class="form-validation" style="width: 288px">
+            <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
+            required
+          </div>
+          <div *ngIf="isInvalid()" class="form-validation" style="width: 288px">
+            <em class="fas fa-exclamation-triangle fa-lg"></em>
+           This is an invalid phone number
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

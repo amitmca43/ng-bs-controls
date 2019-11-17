@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <br />
+  <div class="card">
+    <div class="card-header">
+      <i class="fab fa-wpforms fa-lg"></i> Sample Form Elements
+    </div>
+    <div class="card-body">
+      <mat-tab-group>
+        <mat-tab label="Text">
+          <ng-template matTabContent>
+            <app-form-text></app-form-text>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Formatted">
+          <ng-template matTabContent>
+            <app-form-format></app-form-format>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Lists">
+          <ng-template matTabContent>
+            <app-form-lists></app-form-lists>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Calendars">
+          <ng-template matTabContent>
+            <app-form-dates></app-form-dates>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Checkbox">
+          <ng-template matTabContent>
+            <app-form-checks></app-form-checks>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Regular Expression">
+          <ng-template matTabContent>
+            <app-form-regex></app-form-regex>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

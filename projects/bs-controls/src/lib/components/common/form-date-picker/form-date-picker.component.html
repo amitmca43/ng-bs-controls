@@ -1,0 +1,62 @@
+<div [class]="groupClass">
+  <label [class]="labelClass" [for]="name"
+    ><em
+      *ngIf="isRequired"
+      class="fas fa-asterisk fa-xs"
+      style="color: red"
+    ></em>
+    {{ formLabel }}</label
+  >
+  <div [class]="eleClass">
+    <div class="input-group">
+      <input
+        style="max-width: 350px;float: none"
+        bsDatepicker
+        class="form-control"
+        #dp="ngModel"
+        #bsDatepicker="bsDatepicker"
+        [autofocus]="setAutofocus"
+        [bsConfig]="{
+          containerClass: 'theme-dark-blue',
+          showWeekNumbers: true,
+          dateInputFormat: 'DD/MM/YYYY'
+        }"
+        [(ngModel)]="value"
+        [name]="name"
+        [id]="name"
+        [outsideClick]="true"
+        placeholder="dd/MM/yyyy"
+        placement="bottom"
+        [required]="isRequired"
+        (bsValueChange)="onChange($event)"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-success"
+          type="button"
+          (click)="bsDatepicker.toggle()"
+        >
+          <em
+            class="far fa-calendar-alt fa-lg"
+            title="Open Datepicker"
+            aria-label="Open Datepicker"
+          ></em>
+        </button>
+      </div>
+  
+      <!-- <div *ngIf="!validDate" class="form-validation">
+        <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is not
+        a valid Date
+      </div> -->
+    </div>
+    <div *ngIf="dp.dirty && !isValid" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
+      required
+    </div>
+
+    <!-- <div *ngIf="!validDate" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is not
+      a valid Date
+    </div> -->
+  </div>
+</div>

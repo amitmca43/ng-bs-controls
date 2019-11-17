@@ -115,6 +115,41 @@
           }
         }
       }
+    },
+    "bs-controls": {
+      "projectType": "library",
+      "root": "projects/bs-controls",
+      "sourceRoot": "projects/bs-controls/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/bs-controls/tsconfig.lib.json",
+            "project": "projects/bs-controls/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bs-controls/src/test.ts",
+            "tsConfig": "projects/bs-controls/tsconfig.spec.json",
+            "karmaConfig": "projects/bs-controls/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bs-controls/tsconfig.lib.json",
+              "projects/bs-controls/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ng-bs-controls"
 }

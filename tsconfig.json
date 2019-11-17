@@ -18,6 +18,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "bs-controls": [
+        "dist/bs-controls"
+      ],
+      "bs-controls/*": [
+        "dist/bs-controls/*"
+      ]
+    }
   }
 }

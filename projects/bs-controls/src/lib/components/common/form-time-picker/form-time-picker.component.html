@@ -1,0 +1,21 @@
+<div [class]="groupClass">
+        <label [class]="labelClass" [for]="name"><i *ngIf="isRequired" class="fas fa-asterisk fa-xs" style="color: red"></i> {{formLabel}}</label>
+        <div [class]="eleClass">
+          <div class="input-group">
+            <timepicker
+            [required]= "isRequired"
+            [name]= "name"
+            [(ngModel)]="value"
+            (isValid)="isValid($event)"
+            (ngModelChange)="onChange($event)"
+            ></timepicker>
+          </div>
+          <div *ngIf="isRequired && touchedInput">
+            <div *ngIf="!validInput" class="form-validation">
+              <i class="fas fa-exclamation-triangle fa-lg"></i> {{formLabel}} is required</div>
+          </div>
+          <div *ngIf="!validTime" class="form-validation">
+            <i class="fas fa-exclamation-triangle fa-lg"></i> {{formLabel}} is not a valid Time
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,74 @@
+<form #listForm="ngForm" role="form" class="container-fluid">
+  <app-form-list-select
+    [setAutofocus]="true"
+    [(ngModel)]="list1"
+    [name]="'fList1'"
+    [formLabel]="'List 1'"
+    [isRequired]="true"
+    [listData]="list1Data"
+    (changed)="list1Changed($event)"
+  ></app-form-list-select>
+  <app-form-list-select
+    [(ngModel)]="list2"
+    [name]="'fList2'"
+    [formLabel]="'List 2'"
+    [listData]="list2Data"
+    (changed)="list2Changed($event)"
+  ></app-form-list-select>
+  <app-form-typeahead
+    [(ngModel)]="list3"
+    [name]="'fList3'"
+    [formLabel]="'List 3'"
+    [listData]="list3Data"
+    (changed)="list3Changed($event)"
+  ></app-form-typeahead>
+  <app-form-typeahead
+    [(ngModel)]="list4"
+    [name]="'fList4'"
+    [formLabel]="'List 4'"
+    [listData]="list4Data"
+    (changed)="list4Changed($event)"
+    [isRequired]="true"
+  ></app-form-typeahead>
+  <div>Multi Select</div>
+  <app-form-list-select
+    [multiSelect]="true"
+    [(ngModel)]="multiSelect"
+    [name]="'fMultiList'"
+    [formLabel]="'Multi List'"
+    [isRequired]="true"
+    [listData]="list1Data"
+    (changed)="MultiselectChanged($event)"
+  ></app-form-list-select>
+  <app-form-list-select
+    [multiSelect]="true"
+    [(ngModel)]="multiSelect"   
+    [name]="'fMultiList1'"
+    [formLabel]="'Multi List 2'"
+    [isRequired]="true"
+    [isDisabled]="true"
+    [listData]="list1Data"
+    (changed)="MultiselectChanged($event)"
+  ></app-form-list-select>
+  <div class="col-12" style="border-top: solid 1px rgba(0, 0, 0, 0.12)">
+    <app-form-save-cancel
+      [disableSave]="listForm.invalid || !listForm.dirty || isSaving"
+      [isSaving]="isSaving"
+      (save)="saveForm()"
+      (cancel)="clearForm()"
+    >
+    </app-form-save-cancel>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">&nbsp;</div>
+    <div class="col-sm-8">
+      <ul>
+        <li>List 1: {{ list1Selected | json }}- {{ list1 }}</li>
+        <li>List 2: {{ list2Selected | json }}</li>
+        <li>List 3: {{ list3Selected | json }}</li>
+        <li>List 4: {{ list4Selected | json }}</li>
+        <li>Multi Select: {{ multiSelect | json }}</li>
+      </ul>
+    </div>
+  </div>
+</form>
