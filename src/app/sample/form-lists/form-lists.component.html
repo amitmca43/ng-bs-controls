@@ -42,7 +42,7 @@
   ></app-form-list-select>
   <app-form-list-select
     [multiSelect]="true"
-    [(ngModel)]="multiSelect"   
+    [(ngModel)]="multiSelect"
     [name]="'fMultiList1'"
     [formLabel]="'Multi List 2'"
     [isRequired]="true"
@@ -50,15 +50,7 @@
     [listData]="list1Data"
     (changed)="MultiselectChanged($event)"
   ></app-form-list-select>
-  <div class="col-12" style="border-top: solid 1px rgba(0, 0, 0, 0.12)">
-    <app-form-save-cancel
-      [disableSave]="listForm.invalid || !listForm.dirty || isSaving"
-      [isSaving]="isSaving"
-      (save)="saveForm()"
-      (cancel)="clearForm()"
-    >
-    </app-form-save-cancel>
-  </div>
+
   <div class="form-group row">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-8">

@@ -25,9 +25,11 @@ import {
 } from 'ngx-bootstrap';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NumberInputDirective } from './directives/number-input.directive';
 
 @NgModule({
   declarations: [
+    NumberInputDirective,
     FormCheckBoxComponent,
     FormDatePickerComponent,
     FormIntlPhoneComponent,
@@ -45,7 +47,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDatepickerModule,
+    BsDatepickerModule.forRoot(),
     MatCheckboxModule,
     NgSelectModule,
     NgxIntlTelInputModule,
@@ -53,6 +55,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     TypeaheadModule.forRoot()
   ],
   exports: [
+    NumberInputDirective,
     FormCheckBoxComponent,
     FormDatePickerComponent,
     FormIntlPhoneComponent,

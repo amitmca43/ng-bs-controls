@@ -5,7 +5,6 @@ import {
   forwardRef,
   Output,
   EventEmitter,
-  AfterContentInit,
   ViewChild,
   AfterViewInit
 } from '@angular/core';

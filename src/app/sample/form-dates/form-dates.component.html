@@ -4,46 +4,21 @@
   class="container-fluid"
   style="min-height: 300px"
 >
-  <app-form-date-picker
+  <!-- <app-form-date-picker
     [isRequired]="true"
     [(ngModel)]="date1str"
     [name]="'fDate1'"
     [formLabel]="'Date 1'"
     [setAutofocus]="true"
-  ></app-form-date-picker>
+  ></app-form-date-picker>-->
   <app-form-date-picker
     [isRequired]="true"
     [(ngModel)]="date2str"
     [name]="'fDate2'"
     [formLabel]="'Date 2'"
-  ></app-form-date-picker>
-  <app-form-date-picker
-    [(ngModel)]="date3str"
-    [name]="'fDate3'"
-    [formLabel]="'Date 3'"
-  ></app-form-date-picker>
-  <app-form-date-picker
-    [(ngModel)]="date4str"
-    [name]="'fDate4'"
-    [formLabel]="'Date 4'"
-  ></app-form-date-picker>
-  <app-form-time-picker
-    [isRequired]="true"
-    [(ngModel)]="timestr"
-    [name]="'fTime1'"
-    (timeValue)="timeValue($event)"
-    [formLabel]="'Time Picker'"
-  ></app-form-time-picker>
+  ></app-form-date-picker> 
 
-  <div class="col-12" style="border-top: solid 1px rgba(0, 0, 0, 0.12)">
-    <app-form-save-cancel
-      [disableSave]="dateForm.invalid || !dateForm.dirty || isSaving"
-      [isSaving]="isSaving"
-      (save)="saveForm()"
-      (cancel)="clearForm()"
-    ></app-form-save-cancel>
-  </div>
-  <div class="form-group row" >
+  <div class="form-group row">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-8">
       <ul>
@@ -51,7 +26,6 @@
         <li>Date 2: {{ date2str }}</li>
         <li>Date 3: {{ date3str }}</li>
         <li>Date 4: {{ date4str }}</li>
-        <li>Time picker: {{ timestr }} <br />Time : {{ time }}</li>
       </ul>
     </div>
   </div>

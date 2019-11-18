@@ -1,28 +1,42 @@
 <form #formatForm="ngForm" role="form" class="container-fluid">
-  <app-form-text-numeric [setAutofocus]="true" [formLabel]="'Number 1'" [(ngModel)]="number1" [name]="'fn1'" [isRequired]="true" [placeholder]="'Max 5 numbers'" [maxLength]="5"></app-form-text-numeric>
-  <app-form-text-numeric [formLabel]="'Number 2'" [(ngModel)]="number2" [name]="'fn2'" [placeholder]="'Max 5 numbers'" [maxLength]="5"></app-form-text-numeric>
-  <app-form-text-numeric [formLabel]="'Number 3'" [(ngModel)]="number3" [name]="'fn3'" [placeholder]="'Gimme 10'" [maxLength]="10"></app-form-text-numeric>
-  <app-form-phone-number [formLabel]="'Phone 1'" [(ngModel)]="phone1" [isRequired]="true" [name]="'fp1'" [maxLength]="20"></app-form-phone-number>
-  <app-form-phone-number [formLabel]="'Phone 2'" [(ngModel)]="phone2" [name]="'fp2'" [maxLength]="20"></app-form-phone-number>
-  <app-form-phone-number [formLabel]="'Phone 3'" [(ngModel)]="phone3" [name]="'fp3'" [maxLength]="20"></app-form-phone-number>
-  <!-- <app-form-address-component [modalForm]="true" [isRequired]="true" [countryList]='newCountryList' #addressComponentRef [ausStateList]='ausStateList' [addrLines]='3' (finalAddress)=finalAddress($event)></app-form-address-component> -->
-  <div class="col-12" style="border-top: solid 1px rgba(0, 0, 0, 0.12)">
-    <app-form-save-cancel [disableSave]="formatForm.invalid || !formatForm.dirty || isSaving" [isSaving]="isSaving" (save)="saveForm()" (cancel)="clearForm()"></app-form-save-cancel>
-  </div>
+  <app-form-text-numeric
+    [setAutofocus]="true"
+    [formLabel]="'Number 1'"
+    [(ngModel)]="number1"
+    [name]="'fn1'"
+    [isRequired]="true"
+    [placeholder]="'Max 5 numbers'"
+    [maxLength]="5"
+  ></app-form-text-numeric>
+  <app-form-text-numeric
+    [formLabel]="'Number 2'"
+    [(ngModel)]="number2"
+    [name]="'fn2'"
+    [placeholder]="'Max 5 numbers'"
+    [maxLength]="5"
+  ></app-form-text-numeric>
+  <app-form-text-numeric
+    [formLabel]="'Number 3'"
+    [(ngModel)]="number3"
+    [name]="'fn3'"
+    [placeholder]="'Gimme 10'"
+    [maxLength]="10"
+  ></app-form-text-numeric>
+
   <div class="form-group row" *ngIf="isSaved">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-4">
       <ul>
-        <li>Number 1: {{number1}}</li>
-        <li>Number3: {{number3}}</li>
-        <li>Phone 2: {{phone2}}</li>
+        <li>Number 1: {{ number1 }}</li>
+        <li>Number3: {{ number3 }}</li>
+        <li>Phone 2: {{ phone2 }}</li>
       </ul>
     </div>
     <div class="col-sm-4">
       <ul>
-        <li>Number2: {{number2}}</li>
-        <li>Phone 1: {{phone1}}</li>
-        <li>Phone 3: {{phone3}}</li>
+        <li>Number2: {{ number2 }}</li>
+        <li>Phone 1: {{ phone1 }}</li>
+        <li>Phone 3: {{ phone3 }}</li>
       </ul>
     </div>
   </div>

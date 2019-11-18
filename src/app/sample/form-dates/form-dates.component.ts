@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Utilities } from '../../../../../projects/framework/src/lib/common/utilities';
 
 @Component({
   selector: 'app-form-dates',
@@ -56,7 +55,7 @@ export class FormDatesComponent implements OnInit {
   }
 
   initData() {
-    this.date1str = '1969-07-24T14:00:00.000Z';
-    this.date2str = '1979-07-24T14:00:00.000Z';
+    this.date1str = '1969-07-24T14:00:00.000';
+    this.date2str = '1979-07-24T14:00:00.000';
   }
 }

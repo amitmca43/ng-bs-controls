@@ -1,10 +1,9 @@
-import { Component, forwardRef, Input, ViewChild, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
   NG_VALIDATORS,
   ControlValueAccessor
 } from '@angular/forms';
-import { BsDatepickerDirective } from 'ngx-bootstrap';
 
 import * as moment_ from 'moment';
 const moment = moment_;
@@ -34,10 +33,6 @@ export class FormDatePickerComponent implements ControlValueAccessor, OnInit {
   @Input() setAutofocus = false;
 
   value: Date = null;
-
-  @ViewChild(BsDatepickerDirective, { static: false })
-  bsDatePicker: BsDatepickerDirective;
-
   constructor() {}
 
   groupClass = 'form-group row';
@@ -54,20 +49,20 @@ export class FormDatePickerComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onChange(changedDate: any): void {
+  onChange(changedDate: Date): void {
+    console.log('changedDate');
+    console.log(changedDate);
     if (
       changedDate === undefined ||
       changedDate === null ||
       changedDate.toString() === 'Invalid Date'
     ) {
-      this.value = null;
       this.propagateChange(null);
     } else {
-      this.value = changedDate;
-      const day = moment(this.value).format('DD'); // day
-      const month = moment(this.value).format('MM'); // month
+      const day = moment(changedDate).format('DD'); // day
+      const month = moment(changedDate).format('MM'); // month
 
-      const date = `${this.value.getFullYear()}-${month}-${day}T00:00:00.000`;
+      const date = `${changedDate.getFullYear()}-${month}-${day}T00:00:00.000`;
       this.propagateChange(date);
     }
   }
@@ -85,6 +80,8 @@ export class FormDatePickerComponent implements ControlValueAccessor, OnInit {
   private propagateChange = (_: any) => {};
 
   writeValue(date: string): void {
+    console.log('date');
+    console.log(date);
     if (date && moment(date, moment.ISO_8601, true).isValid()) {
       this.value = new Date(date);
     } else {

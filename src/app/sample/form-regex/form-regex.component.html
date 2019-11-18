@@ -1,19 +1,40 @@
 <form #regExpForm="ngForm" role="form">
-  <app-form-text-email [(ngModel)]="email1" [formLabel]="'Email 1'" [name]="'fEmail1'" [isRequired]="true" [setAutofocus]="true"></app-form-text-email>
-  <app-form-text-email [(ngModel)]="email2" [formLabel]="'Email 2'" [name]="'fEmail2'" [placeholder]="'Max 80 chars]'" [maxLength]="80"></app-form-text-email>
-  <app-form-text-url [(ngModel)]="url1" [formLabel]="'URL 1'" [name]="'fUrl1'" [isRequired]="true"></app-form-text-url>
-  <app-form-text-url [(ngModel)]="url2" [formLabel]="'URL 2'" [name]="'fUrl2'" [placeholder]="'Max 50 chars]'" [maxLength]="50"></app-form-text-url>
-  <div class="col-12" style="border-top: solid 1px rgba(0, 0, 0, 0.12)">
-    <app-form-save-cancel [disableSave]="regExpForm.invalid || !regExpForm.dirty || isSaving" [isSaving]="isSaving" (save)="saveForm()" (cancel)="clearForm()"></app-form-save-cancel>
-  </div>
+  <app-form-text-email
+    [(ngModel)]="email1"
+    [formLabel]="'Email 1'"
+    [name]="'fEmail1'"
+    [isRequired]="true"
+    [setAutofocus]="true"
+  ></app-form-text-email>
+  <app-form-text-email
+    [(ngModel)]="email2"
+    [formLabel]="'Email 2'"
+    [name]="'fEmail2'"
+    [placeholder]="'Max 80 chars]'"
+    [maxLength]="80"
+  ></app-form-text-email>
+  <app-form-text-url
+    [(ngModel)]="url1"
+    [formLabel]="'URL 1'"
+    [name]="'fUrl1'"
+    [isRequired]="true"
+  ></app-form-text-url>
+  <app-form-text-url
+    [(ngModel)]="url2"
+    [formLabel]="'URL 2'"
+    [name]="'fUrl2'"
+    [placeholder]="'Max 50 chars]'"
+    [maxLength]="50"
+  ></app-form-text-url>
+
   <div class="form-group row" *ngIf="isSaved">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-8">
       <ul>
-        <li>Email 1: {{email1}}</li>
-        <li>Email 2: {{email2}}</li>
-        <li>URL 1: {{url1}}</li>
-        <li>URL 2: {{url2}}</li>
+        <li>Email 1: {{ email1 }}</li>
+        <li>Email 2: {{ email2 }}</li>
+        <li>URL 1: {{ url1 }}</li>
+        <li>URL 2: {{ url2 }}</li>
       </ul>
     </div>
   </div>

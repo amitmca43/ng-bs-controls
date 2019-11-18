@@ -25,9 +25,11 @@
     "@ng-select/ng-select": "^2.20.5",
     "bootstrap": "^4.3.1",
     "google-libphonenumber": "^3.2.6",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
-    "ngx-intl-tel-input": "^2.3.1",
     "ngx-bootstrap": "^5.1.0",
+    "ngx-intl-tel-input": "^2.3.1",
+    "ngx-toastr": "^11.2.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

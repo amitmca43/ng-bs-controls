@@ -1,45 +1,85 @@
-<form #textForm="ngForm" role="form" style="min-height: 250px" class="container-fluid">
-  <app-form-text-input  [setAutofocus]="true" [formLabel]="'Text 1'" [(ngModel)]="text1" required [isRequired]="true" [name]="'fText1'" [placeholder]="'[Required: Max 50 chars]'" [maxLength]="50"></app-form-text-input>
-  <app-form-file-uploader [allowedType]="'images'"  [allowMultiple]="false"  [maxFileSizeMB]="2" ></app-form-file-uploader>
-  <app-form-intl-phone   [formLabel]="'Phone'" [(ngModel)]="phone" [isRequired]="true" [name]="'phone'"></app-form-intl-phone>
-  <app-form-rich-editor  [formLabel]="'Rich Text 1'" [isRequired]="true" [name]="'richText1'" ></app-form-rich-editor>
-  <app-form-text-input [formLabel]="'Text 2'" [(ngModel)]="text2" [name]="'fText2'" [placeholder]="'[Max 50 chars]'" [maxLength]="50"></app-form-text-input>
-  <app-form-text-area [formLabel]="'Text Area 1'" [(ngModel)]="text3" [isRequired]="true" [name]="'fText3'" [placeholder]="'[Max 250 chars]'" [maxLength]="250" [rows]="3"></app-form-text-area>
-  <app-form-text-area [formLabel]="'Text Area 2'" [(ngModel)]="text4" [name]="'fText4'" [placeholder]="'[Max 750 chars]'" [maxLength]="500" [rows]="5"></app-form-text-area>
-  <app-form-password [formLabel]="'Password 1'" [(ngModel)]="pwd1" [name]="'fCurrentPwd'" [isRequired]="true"></app-form-password>
-  <app-form-password [formLabel]="'Password 2'" [strengthMeter]="false" [(ngModel)]="pwd2" [name]="'fNewPwd'"></app-form-password>
-  <app-form-text-small [formLabel]="'2 Chars'" [(ngModel)]="text5" [name]="'fText5'" [isRequired]="true" [maxLength]="2" [maxWidth]="100"></app-form-text-small>
-  <app-form-text-small [formLabel]="'10 Chars'" [(ngModel)]="text6" [name]="'fText6'" [placeholder]="'[Max 10 chars]'" [maxLength]="10"></app-form-text-small>
-  <app-form-text-disabled [formLabel]="'Read Only 1'" [(ngModel)]="text7" [name]="'lLabel1'"></app-form-text-disabled>
-  <app-form-text-disabled [formLabel]="'Read Only 2'" [(ngModel)]="text8" [name]="'lLabel2'"></app-form-text-disabled>
-  <app-form-text-alpha-numeric [formLabel]="'Alpha Numeric 2'" [(ngModel)]="text10" [isRequired]="true" [name]="'fText10'" [placeholder]="'[Max 10 chars]'" [maxLength]="10"></app-form-text-alpha-numeric>
-  <app-form-text-numeric-decimal [formLabel]="'Numeric Text '" [(ngModel)]="text9" [isRequired]="true" [isDecimal]="true" [min]="-999" [max]="999" [decimalPlace]="2" [maxLength]="4" [placeholder]="'[number]'" [name]="'ftext9'"></app-form-text-numeric-decimal>
-  <div class="col-12" style="border-top: solid 1px rgba(0, 0, 0, 0.12)">
-    <app-form-save-cancel [disableSave]="textForm.invalid || !textForm.dirty || isSaving" [isSaving]="isSaving" (save)="save()" (cancel)="cancel()"></app-form-save-cancel>
-  </div>
+<form
+  #textForm="ngForm"
+  role="form"
+  style="min-height: 250px"
+  class="container-fluid"
+>
+  <app-form-text-input
+    [setAutofocus]="true"
+    [formLabel]="'Text 1'"
+    [(ngModel)]="text1"
+    required
+    [isRequired]="true"
+    [name]="'fText1'"
+    [placeholder]="'[Required: Max 50 chars]'"
+    [maxLength]="50"
+  ></app-form-text-input>
+
+  <app-form-intl-phone
+    [formLabel]="'Phone'"
+    [(ngModel)]="phone"
+    [isRequired]="true"
+    [name]="'phone'"
+  ></app-form-intl-phone>
+
+  <app-form-text-input
+    [formLabel]="'Text 2'"
+    [(ngModel)]="text2"
+    [name]="'fText2'"
+    [placeholder]="'[Max 50 chars]'"
+    [maxLength]="50"
+  ></app-form-text-input>
+  <app-form-text-area
+    [formLabel]="'Text Area 1'"
+    [(ngModel)]="text3"
+    [isRequired]="true"
+    [name]="'fText3'"
+    [placeholder]="'[Max 250 chars]'"
+    [maxLength]="250"
+    [rows]="3"
+  ></app-form-text-area>
+  <app-form-text-area
+    [formLabel]="'Text Area 2'"
+    [(ngModel)]="text4"
+    [name]="'fText4'"
+    [placeholder]="'[Max 750 chars]'"
+    [maxLength]="500"
+    [rows]="5"
+  ></app-form-text-area>
+  <app-form-password
+    [formLabel]="'Password 1'"
+    [(ngModel)]="pwd1"
+    [name]="'fCurrentPwd'"
+    [isRequired]="true"
+  ></app-form-password>
+  <app-form-password
+    [formLabel]="'Password 2'"
+    [(ngModel)]="pwd2"
+    [name]="'fNewPwd'"
+  ></app-form-password>
 
   <div class="form-group row" *ngIf="isSaved">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-4">
       <ul>
-        <li>Text 1: {{text1}}</li>
-        <li>Phone: {{ phone | json}} </li>
-        <li>Text 3: {{text3}}</li>
-        <li>Pwd 1: {{pwd1}}</li>
-        <li>Text 5: {{text5}}</li>
-        <li>RO 7: {{text7}}</li>
+        <li>Text 1: {{ text1 }}</li>
+        <li>Phone: {{ phone | json }}</li>
+        <li>Text 3: {{ text3 }}</li>
+        <li>Pwd 1: {{ pwd1 }}</li>
+        <li>Text 5: {{ text5 }}</li>
+        <li>RO 7: {{ text7 }}</li>
       </ul>
     </div>
     <div class="col-sm-4">
       <ul>
-        <li>Text 2: {{text2}}</li>
-        <li>Text 4: {{text4}}</li>
-        <li>Pwd 2: {{pwd2}}</li>
-        <li>Text 6: {{text6}}</li>
-        <li>RO 7: {{text7}}</li>
+        <li>Text 2: {{ text2 }}</li>
+        <li>Text 4: {{ text4 }}</li>
+        <li>Pwd 2: {{ pwd2 }}</li>
+        <li>Text 6: {{ text6 }}</li>
+        <li>RO 7: {{ text7 }}</li>
       </ul>
     </div>
   </div>
 </form>
-<pre>Phone: {{ phone | json}} </pre>
+<pre>Phone: {{ phone | json }} </pre>
 <pre>{{ textForm.value | json }}</pre>

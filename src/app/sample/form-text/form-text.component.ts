@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { CountryPhone } from 'projects/framework/src/lib/models/country-phone.model';
+import { CountryPhone } from 'bs-controls/lib/components/common/form-intl-phone/form-intl-phone.component';
+
 
 @Component({
   selector: 'app-form-text',
