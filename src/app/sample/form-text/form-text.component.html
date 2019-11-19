@@ -3,11 +3,9 @@
   role="form"
   style="min-height: 250px" 
 >
-  <app-form-text-input
-    [setAutofocus]="true"
+  <app-form-text-input  
     [formLabel]="'Text 1'"
-    [(ngModel)]="text1"
-    required
+    [(ngModel)]="text1"   
     [isRequired]="true"
     [name]="'fText1'"
     [placeholder]="'[Required: Max 50 chars]'"

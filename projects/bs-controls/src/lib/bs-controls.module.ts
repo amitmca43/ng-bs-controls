@@ -5,18 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // Form Components
-import { FormTextUrlComponent } from './components/common/form-text-url/form-text-url.component';
-import { FormPasswordComponent } from './components/common/form-password/form-password.component';
-import { FormTextAreaComponent } from './components/common/form-text-area/form-text-area.component';
-import { FormCheckBoxComponent } from './components/common/form-check-box/form-check-box.component';
-import { FormTypeaheadComponent } from './components/common/form-typeahead/form-typeahead.component';
-import { FormIntlPhoneComponent } from './components/common/form-intl-phone/form-intl-phone.component';
-import { FormTextEmailComponent } from './components/common/form-text-email/form-text-email.component';
-import { FormTextInputComponent } from './components/common/form-text-input/form-text-input.component';
-import { FormDatePickerComponent } from './components/common/form-date-picker/form-date-picker.component';
-import { FormListSelectComponent } from './components/common/form-list-select/form-list-select.component';
-import { FormTimePickerComponent } from './components/common/form-time-picker/form-time-picker.component';
-import { FormTextNumericComponent } from './components/common/form-text-numeric/form-text-numeric.component';
+import { FormTextUrlComponent } from './components/form-text-url/form-text-url.component';
+import { FormPasswordComponent } from './components/form-password/form-password.component';
+import { FormTextAreaComponent } from './components/form-text-area/form-text-area.component';
+import { FormCheckBoxComponent } from './components/form-check-box/form-check-box.component';
+import { FormTypeaheadComponent } from './components/form-typeahead/form-typeahead.component';
+import { FormIntlPhoneComponent } from './components/form-intl-phone/form-intl-phone.component';
+import { FormTextEmailComponent } from './components/form-text-email/form-text-email.component';
+import { FormTextInputComponent } from './components/form-text-input/form-text-input.component';
+import { FormDatePickerComponent } from './components/form-date-picker/form-date-picker.component';
+import { FormListSelectComponent } from './components/form-list-select/form-list-select.component';
+import { FormTimePickerComponent } from './components/form-time-picker/form-time-picker.component';
+import { FormTextNumericComponent } from './components/form-text-numeric/form-text-numeric.component';
 
 import {
   TimepickerModule,

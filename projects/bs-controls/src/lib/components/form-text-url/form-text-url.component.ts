@@ -1,5 +1,18 @@
-import { Component, forwardRef, Input, AfterContentInit, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS } from '@angular/forms';
+import {
+  Component,
+  forwardRef,
+  Input,
+  AfterContentInit,
+  ViewChild,
+  ElementRef,
+  OnInit
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  FormControl,
+  NG_VALIDATORS
+} from '@angular/forms';
 
 @Component({
   selector: 'app-form-text-url',
@@ -8,17 +21,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS } f
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => FormTextUrlComponent),
-      multi: true,
-    }, {
+      multi: true
+    },
+    {
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => FormTextUrlComponent),
-      multi: true,
+      multi: true
     }
   ]
 })
-export class FormTextUrlComponent implements ControlValueAccessor, AfterContentInit, OnInit {
-
-  constructor() { }
+export class FormTextUrlComponent
+  implements ControlValueAccessor, AfterContentInit, OnInit {
+  constructor() {}
   @Input() splitCol = false;
   @Input() modalForm = false;
   @Input() isRequired = false;
@@ -50,23 +64,27 @@ export class FormTextUrlComponent implements ControlValueAccessor, AfterContentI
 
   ngAfterContentInit(): void {
     if (this.setAutofocus) {
-      setTimeout(() => { this.urlCtrl.nativeElement.focus(); }, 1000);
+      setTimeout(() => {
+        this.urlCtrl.nativeElement.focus();
+      }, 1000);
     }
   }
 
-  onChange(event: { target: { value: any; }; }) {
+  onChange(event: { target: { value: any } }) {
     let theVal = this.val;
-    if (theVal === undefined) { theVal = ''; }
+    if (theVal === undefined) {
+      theVal = '';
+    }
     this.touchedInput = theVal !== event.target.value;
     this.val = event.target.value;
     this.propagateChange(this.val);
   }
-  onBlur(event: { target: { value: any; }; }) {
+  onBlur(event: { target: { value: any } }) {
     this.val = event.target.value;
     this.touchedInput = true;
     this.propagateChange(this.val);
   }
-  private propagateChange = (_: any) => { };
+  private propagateChange = (_: any) => {};
 
   get value() {
     if (this.val !== undefined) {
@@ -87,7 +105,7 @@ export class FormTextUrlComponent implements ControlValueAccessor, AfterContentI
 
   public validate(c: FormControl) {
     this.isValid();
-    return (this.validInput) ? null : { stringError: { valid: false }, };
+    return this.validInput ? null : { stringError: { valid: false } };
   }
 
   private isValid(): void {
@@ -101,7 +119,9 @@ export class FormTextUrlComponent implements ControlValueAccessor, AfterContentI
     }
 
     // tslint:disable-next-line: max-line-length
-    const regexp = new RegExp(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/);
+    const regexp = new RegExp(
+      /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
+    );
     const validEmail = regexp.test(this.val);
 
     if (!this.isRequired && validEmail) {
@@ -115,8 +135,9 @@ export class FormTextUrlComponent implements ControlValueAccessor, AfterContentI
     this.validInput = validEmail;
   }
 
-  registerOnChange(fn: any): void { this.propagateChange = fn; }
-  registerOnTouched(_fn: any): void { }
-  setDisabledState?(_isDisabled: boolean): void { }
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+  registerOnTouched(_fn: any): void {}
+  setDisabledState?(_isDisabled: boolean): void {}
 }
-

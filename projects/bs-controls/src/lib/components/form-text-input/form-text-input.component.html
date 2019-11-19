@@ -1,0 +1,28 @@
+<div [class]="groupClass">
+  <label [class]="labelClass" [for]="name"
+    ><em
+      *ngIf="isRequired"
+      class="fas fa-asterisk fa-xs"
+      style="color:red"
+    ></em>
+    {{ formLabel }}</label
+  >
+  <div [class]="eleClass">
+    <input
+      class="form-control"
+      #dp="ngModel"
+      [(ngModel)]="value"
+      [name]="name"
+      [id]="name"
+      [attr.placeholder]="placeholder"
+      [attr.maxlength]="maxLength"
+      [required]="isRequired"
+      (blur)="onBlur($event)"
+      (change)="onChange($event)"
+    />
+    <div *ngIf="dp.errors && dp.errors.required" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
+      required
+    </div>
+  </div>
+</div>
