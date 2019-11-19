@@ -1,15 +1,20 @@
 <div [class]="groupClass">
   <label [class]="labelClass" [for]="name"
-    ><i *ngIf="isRequired" class="fas fa-asterisk fa-xs" style="color:red"></i>
+    ><em
+      *ngIf="isRequired"
+      class="fas fa-asterisk fa-xs"
+      style="color:red"
+    ></em>
     {{ formLabel }}</label
   >
   <div [class]="eleClass">
     <input
-      #urlCtrl
+      #ctrl
+      #dp="ngModel"
+      [(ngModel)]="value"
       type="text"
       class="form-control"
       [required]="isRequired"
-      [value]="value"
       (blur)="onBlur($event)"
       (change)="onChange($event)"
       (keyup)="onChange($event)"
@@ -18,15 +23,14 @@
       [attr.placeholder]="placeholder"
       [attr.maxlength]="maxLength"
     />
-    <div *ngIf="isRequired && touchedInput">
-      <div *ngIf="!validInput" class="form-validation">
-        <i class="fas fa-exclamation-triangle fa-lg"></i> {{ formLabel }} is
-        required and/or an invalid url
-      </div>
+    <div *ngIf="dp.errors && dp.errors.required" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
+      required
     </div>
-    <div *ngIf="!isRequired && !validInput" class="form-validation">
-      <i class="fas fa-exclamation-triangle fa-lg"></i> {{ formLabel }} is an
+    <div *ngIf="!validInput" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is an
       invalid url
     </div>
+    <div>{{ dp.errors | json }}</div>
   </div>
 </div>

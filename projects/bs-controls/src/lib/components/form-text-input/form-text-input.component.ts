@@ -1,5 +1,6 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseControlComponent } from '../base-component';
 
 @Component({
   selector: 'app-form-text-input',
@@ -12,59 +13,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class FormTextInputComponent implements ControlValueAccessor {
-  @Input() splitCol = false; // for forms with multiple columns of input
-  @Input() modalForm = false; // for forms inside a modal popup
-  @Input() isRequired = false;
-  @Input() name = 'textbox';
-  @Input() formLabel = 'textbox';
-  @Input() placeholder = '';
-  @Input() maxLength = 250;
-  @Input() setAutofocus = false;
-
-  private _value: string;
-
-  validInput: boolean;
-  touchedInput: boolean;
-
-  groupClass = 'form-group';
-  labelClass = '';
-  eleClass = '';
-
-  constructor() {}
-
-  get value() {
-    return this._value;
+export class FormTextInputComponent extends BaseControlComponent {
+  constructor() {
+    super();
   }
-
-  set value(val) {
-    this._value = val;
-    this.propagateChange(this._value);
-    this.onTouched();
-  }
-
-  onChange(event: { target: { value: any } }) {
-    this.value = event.target.value;
-  }
-
-  onBlur(event: { target: { value: any } }) {
-    this.value = event.target.value;
-  }
-
-  writeValue(val: any): void {
-    this._value = val;
-  }
-
-  private propagateChange = (_: any) => {};
-
-  private onTouched: any = () => {};
-
-  registerOnChange(fn: any): void {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-  setDisabledState?(isDisabled: boolean): void {}
 }
