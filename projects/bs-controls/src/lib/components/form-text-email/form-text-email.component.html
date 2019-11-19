@@ -10,8 +10,6 @@
   <div [class]="eleClass">
     <input
       #ctrl
-      #dp="ngModel"
-      [(ngModel)]="value"
       type="email"
       class="form-control"
       [name]="name"
@@ -25,13 +23,16 @@
       (keyup)="onChange($event)"
     />
     <div
-      *ngIf="dp.touched && dp.errors && dp.errors.required"
+      *ngIf="control.touched && control.errors && control.errors.required"
       class="form-validation"
     >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
       required
     </div>
-    <div *ngIf="dp.touched && !validInput" class="form-validation">
+    <div
+      *ngIf="control.touched && control.errors && control.errors.email"
+      class="form-validation"
+    >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is an
       invalid email
     </div>

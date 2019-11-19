@@ -1,9 +1,22 @@
-import { Input, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import {
+  Input,
+  AfterContentInit,
+  ViewChild,
+  ElementRef,
+  Injector,
+  Type
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  NgControl,
+  FormControl,
+  Validators
+} from '@angular/forms';
 
 export abstract class BaseTextControlComponent
   implements ControlValueAccessor, AfterContentInit {
-  constructor() {}
+  control: FormControl;
+  constructor(private injector?: Injector) {}
 
   @Input() isRequired = false;
   @Input() name = 'urltextbox';
@@ -26,6 +39,15 @@ export abstract class BaseTextControlComponent
         this.ctrl.nativeElement.focus();
       }, 400);
     }
+
+    if (this.injector) {
+      const ngControl = this.injector.get<NgControl>(
+        NgControl as Type<NgControl>
+      );
+      if (ngControl) {
+        this.control = ngControl.control as FormControl;
+      }
+    }
   }
 
   get value() {
@@ -40,7 +62,7 @@ export abstract class BaseTextControlComponent
 
   onChange(event: { target: { value: any } }) {
     this.value = event.target.value;
-    console.log(this.ctrl.nativeElement);
+    console.log(this.control);
   }
 
   onBlur(event: { target: { value: any } }) {

@@ -1,5 +1,10 @@
-import { Component, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS } from '@angular/forms';
+import {
+  Component,
+  forwardRef,
+  Injector,
+  AfterContentInit
+} from '@angular/core';
+import { NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { BaseTextControlComponent } from '../base-component';
 
 @Component({
@@ -10,33 +15,21 @@ import { BaseTextControlComponent } from '../base-component';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => FormTextEmailComponent),
       multi: true
-    },
-    ,
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => FormTextEmailComponent),
-      multi: true
     }
   ]
 })
-export class FormTextEmailComponent extends BaseTextControlComponent {
+export class FormTextEmailComponent extends BaseTextControlComponent
+  implements AfterContentInit {
   validInput: any;
-  constructor() {
-    super();
+  constructor(injector: Injector) {
+    super(injector);
   }
 
-  public validate(c: FormControl) {
-    this.isValid();
-    return this.validInput ? null : { stringError: { valid: false } };
-  }
-
-  private isValid(): void {
-    if (this.value === undefined || this.value === '') {
-      this.validInput = true;
-      return;
+  ngAfterContentInit(): void {
+    super.ngAfterContentInit();
+    if (this.control) {
+      this.control.setValidators([Validators.required, Validators.email]);
+      console.log(this.isRequired);
     }
-
-    const regexp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-    this.validInput = regexp.test(this.value);
   }
 }
