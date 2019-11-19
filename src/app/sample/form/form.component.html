@@ -1,42 +1,75 @@
-<div class="container-fluid">
+<div class="container-fluid" style="max-width: 700px">
   <br />
   <div class="card">
     <div class="card-header">
-      <i class="fab fa-wpforms fa-lg"></i> Sample Form Elements
+      <em class="fab fa-wpforms fa-lg"></em> Sample Form Elements
     </div>
-    <div class="card-body">
-      <mat-tab-group>
-        <mat-tab label="Text">
-          <ng-template matTabContent>
-            <app-form-text></app-form-text>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Formatted">
-          <ng-template matTabContent>
-            <app-form-format></app-form-format>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Lists">
-          <ng-template matTabContent>
-            <app-form-lists></app-form-lists>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Calendars">
-          <ng-template matTabContent>
-            <app-form-dates></app-form-dates>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Checkbox">
-          <ng-template matTabContent>
-            <app-form-checks></app-form-checks>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Regular Expression">
-          <ng-template matTabContent>
-            <app-form-regex></app-form-regex>
-          </ng-template>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
+    <form #form="ngForm" role="form" class="container-fluid">
+      <app-form-text-email
+        [(ngModel)]="email1"
+        [formLabel]="'Email 1'"
+        [name]="'fEmail1'"
+        [isRequired]="true"
+        [setAutofocus]="true"
+      ></app-form-text-email>
+      <app-form-text-url
+        [(ngModel)]="url1"
+        [formLabel]="'URL 1'"
+        [name]="'fUrl1'"
+        [isRequired]="true"
+        [placeholder]="'Max 50 chars]'"
+        [maxLength]="50"
+      ></app-form-text-url>
+
+      <app-form-text-input
+        [formLabel]="'Text 1'"
+        [(ngModel)]="text1"
+        [isRequired]="true"
+        [name]="'fText1'"
+        [placeholder]="'[Required: Max 50 chars]'"
+        [maxLength]="50"
+      ></app-form-text-input>
+
+      <app-form-text-area
+        [formLabel]="'Text Area 1'"
+        [(ngModel)]="text3"
+        [isRequired]="true"
+        [name]="'fText3'"
+        [placeholder]="'[Max 250 chars]'"
+        [maxLength]="250"
+        [rows]="3"
+      ></app-form-text-area>
+
+      <app-form-password
+        [formLabel]="'Password 1'"
+        [(ngModel)]="pwd1"
+        [name]="'fCurrentPwd'"
+        [isRequired]="true"
+      ></app-form-password>
+
+      <app-form-text-numeric
+        [setAutofocus]="true"
+        [formLabel]="'Number 1'"
+        [(ngModel)]="number1"
+        [name]="'fn1'"
+        [isRequired]="true"
+        [placeholder]="'Max 5 numbers'"
+        [maxLength]="5"
+      ></app-form-text-numeric>
+
+      <app-form-date-picker
+        [isRequired]="true"
+        [(ngModel)]="date2str"
+        [name]="'fDate2'"
+        [formLabel]="'Date 2'"
+      ></app-form-date-picker>
+
+      <app-form-check-box
+        [(ngModel)]="check1"
+        [name]="'fCheck1'"
+        [formLabel]="'Primary Check'"
+      ></app-form-check-box>
+    </form>
+    <pre>{{ form.value | json }}</pre>
   </div>
 </div>
