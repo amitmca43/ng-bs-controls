@@ -1,17 +1,39 @@
 <div [class]="groupClass">
-  <label [class]="labelClass" [for]="name"><i *ngIf="isRequired" class="fas fa-asterisk fa-xs" style="color:red"></i> {{formLabel}}</label>
+  <label [class]="labelClass" [for]="name"
+    ><em
+      *ngIf="isRequired"
+      class="fas fa-asterisk fa-xs"
+      style="color:red"
+    ></em>
+    {{ formLabel }}</label
+  >
   <div [class]="eleClass">
-    <input type="email" class="form-control" #emailCtrl 
-      [name]="name" [id]="name" [value]="value" [required]="isRequired" 
-      [attr.placeholder]="placeholder" [attr.maxlength]="maxLength"      
-      (blur)="onBlur($event)" (change)="onChange($event)" (keyup)="onChange($event)" />
-    <div *ngIf="isRequired && touchedInput">
-      <div *ngIf="isRequired && !validInput" class="form-validation">
-        <i class="fas fa-exclamation-triangle fa-lg"></i> {{formLabel}} is required and/or an invalid email
-      </div>
+    <input
+      #ctrl
+      #dp="ngModel"
+      [(ngModel)]="value"
+      type="email"
+      class="form-control"
+      [name]="name"
+      [id]="name"
+      [value]="value"
+      [required]="isRequired"
+      [attr.placeholder]="placeholder"
+      [attr.maxlength]="maxLength"
+      (blur)="onBlur($event)"
+      (change)="onChange($event)"
+      (keyup)="onChange($event)"
+    />
+    <div
+      *ngIf="dp.touched && dp.errors && dp.errors.required"
+      class="form-validation"
+    >
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
+      required
     </div>
-    <div *ngIf="!isRequired && !validInput" class="form-validation">
-      <i class="fas fa-exclamation-triangle fa-lg"></i> {{formLabel}} is an invalid email
+    <div *ngIf="dp.touched && !validInput" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is an
+      invalid email
     </div>
   </div>
 </div>

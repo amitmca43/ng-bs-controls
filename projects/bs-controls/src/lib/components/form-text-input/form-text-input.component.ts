@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BaseControlComponent } from '../base-component';
+import { BaseTextControlComponent } from '../base-component';
 
 @Component({
   selector: 'app-form-text-input',
@@ -13,7 +13,7 @@ import { BaseControlComponent } from '../base-component';
     }
   ]
 })
-export class FormTextInputComponent extends BaseControlComponent {
+export class FormTextInputComponent extends BaseTextControlComponent {
   constructor() {
     super();
   }

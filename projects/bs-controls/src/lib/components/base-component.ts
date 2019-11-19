@@ -1,7 +1,7 @@
 import { Input, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-export abstract class BaseControlComponent
+export abstract class BaseTextControlComponent
   implements ControlValueAccessor, AfterContentInit {
   constructor() {}
 
@@ -40,6 +40,7 @@ export abstract class BaseControlComponent
 
   onChange(event: { target: { value: any } }) {
     this.value = event.target.value;
+    console.log(this.ctrl.nativeElement);
   }
 
   onBlur(event: { target: { value: any } }) {

@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
-import { BaseControlComponent } from '../base-component';
+import { BaseTextControlComponent } from '../base-component';
 
 @Component({
   selector: 'app-form-text-url',
@@ -18,7 +18,7 @@ import { BaseControlComponent } from '../base-component';
     }
   ]
 })
-export class FormTextUrlComponent extends BaseControlComponent {
+export class FormTextUrlComponent extends BaseTextControlComponent {
   constructor() {
     super();
   }
@@ -27,7 +27,7 @@ export class FormTextUrlComponent extends BaseControlComponent {
 
   public validate() {
     this.isValid();
-    return { stringError: { valid: false } };
+    return this.validInput ? null : { stringError: { valid: false } };
   }
 
   private isValid(): void {

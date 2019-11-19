@@ -17,20 +17,21 @@
       [required]="isRequired"
       (blur)="onBlur($event)"
       (change)="onChange($event)"
-      (keyup)="onChange($event)"
       [name]="name"
       [id]="name"
       [attr.placeholder]="placeholder"
       [attr.maxlength]="maxLength"
     />
-    <div *ngIf="dp.errors && dp.errors.required" class="form-validation">
+    <div
+      *ngIf="dp.touched && dp.errors && dp.errors.required"
+      class="form-validation"
+    >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
       required
     </div>
-    <div *ngIf="!validInput" class="form-validation">
+    <div *ngIf="dp.touched && !validInput" class="form-validation">
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is an
       invalid url
     </div>
-    <div>{{ dp.errors | json }}</div>
   </div>
 </div>

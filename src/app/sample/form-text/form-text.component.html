@@ -1,23 +1,12 @@
-<form
-  #textForm="ngForm"
-  role="form"
-  style="min-height: 250px" 
->
-  <app-form-text-input  
+<form #textForm="ngForm" role="form" style="min-height: 250px">
+  <app-form-text-input
     [formLabel]="'Text 1'"
-    [(ngModel)]="text1"   
+    [(ngModel)]="text1"
     [isRequired]="true"
     [name]="'fText1'"
     [placeholder]="'[Required: Max 50 chars]'"
     [maxLength]="50"
   ></app-form-text-input>
-
-  <app-form-intl-phone
-    [formLabel]="'Phone'"
-    [(ngModel)]="phone"
-    [isRequired]="true"
-    [name]="'phone'"
-  ></app-form-intl-phone>
 
   <app-form-text-input
     [formLabel]="'Text 2'"

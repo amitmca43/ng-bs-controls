@@ -21,7 +21,7 @@
       (blur)="onBlur($event)"
       (change)="onChange($event)"
     />
-    <div *ngIf="dp.errors && dp.errors.required" class="form-validation">
+    <div *ngIf="dp.touched && dp.errors && dp.errors.required" class="form-validation">
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
       required
     </div>

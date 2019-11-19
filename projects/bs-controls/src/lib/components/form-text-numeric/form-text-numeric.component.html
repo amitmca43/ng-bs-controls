@@ -1,17 +1,22 @@
 <div [class]="groupClass">
   <label [class]="labelClass" [for]="name"
-    ><i *ngIf="isRequired" class="fas fa-asterisk fa-xs" style="color:red"></i>
+    ><em
+      *ngIf="isRequired"
+      class="fas fa-asterisk fa-xs"
+      style="color:red"
+    ></em>
     {{ formLabel }}</label
   >
   <div [class]="eleClass">
-    <input    
+    <input
+      #ctrl
       class="form-control"
-      #numCtrl
+      #dp="ngModel"
+      [(ngModel)]="value"
       numberInput
       [style.max-width.px]="maxWidth"
       [attr.placeholder]="placeholder"
       [attr.maxlength]="maxLength"
-      [value]="value"
       [required]="isRequired"
       [name]="name"
       [id]="name"
@@ -19,11 +24,9 @@
       (change)="onChange($event)"
       (keyup)="onChange($event)"
     />
-    <div *ngIf="isRequired && touchedInput">
-      <div *ngIf="!validInput" class="form-validation">
-        <i class="fas fa-exclamation-triangle fa-lg"></i> {{ formLabel }} is
-        required or is not a valid number
-      </div>
+    <div *ngIf="dp.touched && dp.errors && dp.errors.required" class="form-validation">
+      <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
+      required
     </div>
   </div>
 </div>
