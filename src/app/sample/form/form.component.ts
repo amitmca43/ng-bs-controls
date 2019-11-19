@@ -44,5 +44,6 @@ export class FormComponent implements OnInit {
     this.number2 = undefined;
     this.number3 = undefined;
     this.date2str = '1979-07-24T14:00:00.000';
+    this.check1 = false;
   }
 }

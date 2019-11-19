@@ -14,13 +14,11 @@
       class="form-control"
       [name]="name"
       [id]="name"
-      [value]="value"
-      [required]="isRequired"
+      [(ngModel)]="value"     
       [attr.placeholder]="placeholder"
       [attr.maxlength]="maxLength"
       (blur)="onBlur($event)"
       (change)="onChange($event)"
-      (keyup)="onChange($event)"
     />
     <div
       *ngIf="control.touched && control.errors && control.errors.required"

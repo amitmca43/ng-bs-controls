@@ -20,16 +20,15 @@ import { BaseTextControlComponent } from '../base-component';
 })
 export class FormTextEmailComponent extends BaseTextControlComponent
   implements AfterContentInit {
-  validInput: any;
   constructor(injector: Injector) {
     super(injector);
   }
 
   ngAfterContentInit(): void {
     super.ngAfterContentInit();
+    this.validators.push(Validators.email);
     if (this.control) {
-      this.control.setValidators([Validators.required, Validators.email]);
-      console.log(this.isRequired);
+      this.control.setValidators(this.validators);
     }
   }
 }

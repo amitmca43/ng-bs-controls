@@ -10,10 +10,8 @@
   <div [class]="eleClass">
     <textarea
       #ctrl
-      #dp="ngModel"
       [(ngModel)]="value"
-      class="form-control"
-      [required]="isRequired"
+      class="form-control"      
       (blur)="onBlur($event)"
       [disabled]="isDisabled"
       (change)="onChange($event)"
@@ -24,7 +22,7 @@
       [attr.rows]="rows"
     ></textarea>
     <div
-      *ngIf="dp.touched && dp.errors && dp.errors.required"
+      *ngIf="control.touched && control.errors && control.errors.required"
       class="form-validation"
     >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is

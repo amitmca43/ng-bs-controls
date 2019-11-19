@@ -1,5 +1,10 @@
-import { Component, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import {
+  Component,
+  forwardRef,
+  Injector,
+  AfterContentInit
+} from '@angular/core';
+import { NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { BaseTextControlComponent } from '../base-component';
 
 @Component({
@@ -10,35 +15,24 @@ import { BaseTextControlComponent } from '../base-component';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => FormTextUrlComponent),
       multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => FormTextUrlComponent),
-      multi: true
     }
   ]
 })
-export class FormTextUrlComponent extends BaseTextControlComponent {
-  constructor() {
-    super();
+export class FormTextUrlComponent extends BaseTextControlComponent
+  implements AfterContentInit {
+  regexp = new RegExp(
+    /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
+  );
+
+  constructor(injector: Injector) {
+    super(injector);
   }
 
-  validInput: boolean;
-
-  public validate() {
-    this.isValid();
-    return this.validInput ? null : { stringError: { valid: false } };
-  }
-
-  private isValid(): void {
-    if (this.value === undefined || this.value === '') {
-      this.validInput = true;
-      return;
+  ngAfterContentInit(): void {
+    super.ngAfterContentInit();
+    this.validators.push(Validators.pattern(this.regexp));
+    if (this.control) {
+      this.control.setValidators(this.validators);
     }
-    // tslint:disable-next-line: max-line-length
-    const regexp = new RegExp(
-      /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
-    );
-    this.validInput = regexp.test(this.value);
   }
 }

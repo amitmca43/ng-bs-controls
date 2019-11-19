@@ -2,17 +2,10 @@ import {
   Component,
   forwardRef,
   Input,
-  OnInit,
   AfterContentInit,
-  ViewChild,
-  ElementRef
+  Injector
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormControl,
-  NG_VALIDATORS
-} from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseTextControlComponent } from '../base-component';
 
 @Component({
@@ -23,18 +16,20 @@ import { BaseTextControlComponent } from '../base-component';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => FormTextNumericComponent),
       multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => FormTextNumericComponent),
-      multi: true
     }
   ]
 })
-export class FormTextNumericComponent extends BaseTextControlComponent {
+export class FormTextNumericComponent extends BaseTextControlComponent
+  implements AfterContentInit {
   @Input() maxWidth = 500;
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
-  constructor() {
-    super();
+  ngAfterContentInit(): void {
+    super.ngAfterContentInit();
+    if (this.control) {
+      this.control.setValidators(this.validators);
+    }
   }
 }

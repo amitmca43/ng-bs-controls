@@ -10,11 +10,8 @@
   <div [class]="eleClass">
     <input
       #ctrl
-      #dp="ngModel"
       [(ngModel)]="value"
-      type="text"
-      class="form-control"
-      [required]="isRequired"
+      class="form-control"     
       (blur)="onBlur($event)"
       (change)="onChange($event)"
       [name]="name"
@@ -23,13 +20,16 @@
       [attr.maxlength]="maxLength"
     />
     <div
-      *ngIf="dp.touched && dp.errors && dp.errors.required"
+      *ngIf="control.touched && control.errors && control.errors.required"
       class="form-validation"
     >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
       required
     </div>
-    <div *ngIf="dp.touched && !validInput" class="form-validation">
+    <div
+      *ngIf="control.touched && control.errors && control.errors.pattern"
+      class="form-validation"
+    >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is an
       invalid url
     </div>

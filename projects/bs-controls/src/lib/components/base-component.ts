@@ -10,14 +10,12 @@ import {
   ControlValueAccessor,
   NgControl,
   FormControl,
-  Validators
+  Validators,
+  ValidatorFn
 } from '@angular/forms';
 
 export abstract class BaseTextControlComponent
   implements ControlValueAccessor, AfterContentInit {
-  control: FormControl;
-  constructor(private injector?: Injector) {}
-
   @Input() isRequired = false;
   @Input() name = 'urltextbox';
   @Input() formLabel = 'urltextbox';
@@ -27,11 +25,17 @@ export abstract class BaseTextControlComponent
   // tslint:disable-next-line: no-input-rename
   private _value: string;
 
+  validators: ValidatorFn[] = [];
+
   @ViewChild('ctrl', { static: false }) ctrl: ElementRef;
 
   groupClass = 'form-group';
   labelClass = '';
   eleClass = '';
+
+  control: FormControl;
+
+  constructor(private injector?: Injector) {}
 
   ngAfterContentInit(): void {
     if (this.setAutofocus) {
@@ -48,6 +52,10 @@ export abstract class BaseTextControlComponent
         this.control = ngControl.control as FormControl;
       }
     }
+
+    if (this.isRequired) {
+      this.validators.push(Validators.required);
+    }
   }
 
   get value() {
@@ -60,13 +68,20 @@ export abstract class BaseTextControlComponent
     this.onTouched();
   }
 
-  onChange(event: { target: { value: any } }) {
-    this.value = event.target.value;
-    console.log(this.control);
+  onChange(event: any) {
+    this.updateValue(event);
   }
 
-  onBlur(event: { target: { value: any } }) {
-    this.value = event.target.value;
+  onBlur(event: any) {
+    this.updateValue(event);
+  }
+
+  private updateValue(event: any) {
+    if (event.target.type === 'checkbox') {
+      this.value = event.target.checked;
+    } else {
+      this.value = event.target.value;
+    }
   }
 
   writeValue(val: any): void {

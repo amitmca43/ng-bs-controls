@@ -11,20 +11,20 @@
     <input
       #ctrl
       class="form-control"
-      #dp="ngModel"
-      [(ngModel)]="value"
       numberInput
+      [name]="name"
+      [(ngModel)]="value"
+      [id]="name"
       [style.max-width.px]="maxWidth"
       [attr.placeholder]="placeholder"
-      [attr.maxlength]="maxLength"
-      [required]="isRequired"
-      [name]="name"
-      [id]="name"
+      [attr.maxlength]="maxLength"    
       (blur)="onBlur($event)"
       (change)="onChange($event)"
-      (keyup)="onChange($event)"
     />
-    <div *ngIf="dp.touched && dp.errors && dp.errors.required" class="form-validation">
+    <div
+      *ngIf="control.touched && control.errors && control.errors.required"
+      class="form-validation"
+    >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
       required
     </div>

@@ -20,7 +20,6 @@
         [placeholder]="'Max 50 chars]'"
         [maxLength]="50"
       ></app-form-text-url>
-
       <app-form-text-input
         [formLabel]="'Text 1'"
         [(ngModel)]="text1"
@@ -29,7 +28,6 @@
         [placeholder]="'[Required: Max 50 chars]'"
         [maxLength]="50"
       ></app-form-text-input>
-
       <app-form-text-area
         [formLabel]="'Text Area 1'"
         [(ngModel)]="text3"
@@ -39,14 +37,12 @@
         [maxLength]="250"
         [rows]="3"
       ></app-form-text-area>
-
       <app-form-password
         [formLabel]="'Password 1'"
         [(ngModel)]="pwd1"
         [name]="'fCurrentPwd'"
         [isRequired]="true"
       ></app-form-password>
-
       <app-form-text-numeric
         [setAutofocus]="true"
         [formLabel]="'Number 1'"
@@ -56,14 +52,12 @@
         [placeholder]="'Max 5 numbers'"
         [maxLength]="5"
       ></app-form-text-numeric>
-
       <app-form-date-picker
         [isRequired]="true"
         [(ngModel)]="date2str"
         [name]="'fDate2'"
         [formLabel]="'Date 2'"
       ></app-form-date-picker>
-
       <app-form-check-box
         [(ngModel)]="check1"
         [name]="'fCheck1'"

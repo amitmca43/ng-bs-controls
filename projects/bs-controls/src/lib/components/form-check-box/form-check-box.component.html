@@ -1,6 +1,13 @@
 <div [class]="groupClass">
-  <label [class]="labelClass" [for]="name">{{formLabel}}</label>
-  <div [class]="eleClass" style="padding-top: 7px">
-    <mat-checkbox [checked]="value" [name]="name" [id]="name" [color]="color" (change)="onChange($event)" [disabled]="isDisabled" [disableRipple]="isDisabled"></mat-checkbox>
-  </div>
+  <input
+    #ctrl
+    [(ngModel)]="value"
+    type="checkbox"
+    class="form-check-input"
+    [name]="name"
+    [id]="name"
+    (blur)="onBlur($event)"
+    (change)="onChange($event)"
+  />
+  <label [class]="labelClass" [for]="name">{{ formLabel }}</label>
 </div>
