@@ -8,42 +8,26 @@
     {{ formLabel }}</label
   >
   <div [class]="eleClass">
-    <div class="input-group">
-      <input
-        bsDatepicker
-        class="form-control"
-        #dp="ngModel"  
-        #bsDatepicker="bsDatepicker"    
-        [(ngModel)]="value"
-        [bsConfig]="{
-          dateInputFormat: 'DD-MM-YYYY',
-          containerClass: 'theme-blue'
-        }"
-        [name]="name"
-        [id]="name"
-        [outsideClick]="true"
-        placeholder="dd/MM/yyyy"
-        placement="bottom"
-        [required]="isRequired"
-      (bsValueChange)="onChange($event)"
-      />
-      <div class="input-group-append">
-        <button
-          class="btn btn-outline-success"
-          type="button"
-          (click)="bsDatepicker.toggle()"
-        >
-          <em
-            class="far fa-calendar-alt fa-lg"
-            title="Open Datepicker"
-            aria-label="Open Datepicker"
-          ></em>
-        </button>
-      </div>
-    </div>
-    <div *ngIf="dp.dirty && !isValid" class="form-validation">
+    <input
+      #ctrl
+      type="date"
+      class="form-control"
+      [name]="name"
+      [id]="name"
+      [min]="min"
+      [max]="max"
+      [(ngModel)]="value"
+      [style.max-width.px]="maxWidth"
+      (blur)="onBlur($event)"
+      (change)="onChange($event)"
+    />
+    <div
+      *ngIf="control.dirty && control.errors && control.errors.required"
+      class="form-validation"
+    >
       <em class="fas fa-exclamation-triangle fa-lg"></em> {{ formLabel }} is
       required
     </div>
+    <div>{{ control.errors | json }}</div>
   </div>
 </div>

@@ -14,7 +14,6 @@ import { FormTextEmailComponent } from './components/form-text-email/form-text-e
 import { FormTextInputComponent } from './components/form-text-input/form-text-input.component';
 import { FormDatePickerComponent } from './components/form-date-picker/form-date-picker.component';
 import { FormListSelectComponent } from './components/form-list-select/form-list-select.component';
-import { FormTimePickerComponent } from './components/form-time-picker/form-time-picker.component';
 import { FormTextNumericComponent } from './components/form-text-numeric/form-text-numeric.component';
 
 import {
@@ -38,8 +37,7 @@ import { NumberInputDirective } from './directives/number-input.directive';
     FormTextEmailComponent,
     FormTextInputComponent,
     FormTextNumericComponent,
-    FormTextUrlComponent,
-    FormTimePickerComponent
+    FormTextUrlComponent
   ],
   imports: [
     CommonModule,
@@ -63,8 +61,7 @@ import { NumberInputDirective } from './directives/number-input.directive';
     FormTextEmailComponent,
     FormTextInputComponent,
     FormTextNumericComponent,
-    FormTextUrlComponent,
-    FormTimePickerComponent
+    FormTextUrlComponent
   ]
 })
 export class BsControlsModule {}

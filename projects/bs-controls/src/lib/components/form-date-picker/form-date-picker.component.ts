@@ -1,12 +1,14 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
-  NG_VALUE_ACCESSOR,
-  NG_VALIDATORS,
-  ControlValueAccessor
-} from '@angular/forms';
+  Component,
+  forwardRef,
+  Injector,
+  AfterContentInit,
+  Input
+} from '@angular/core';
+import { NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 import * as moment_ from 'moment';
-const moment = moment_;
+import { BaseTextControlComponent } from '../base-component';
 
 @Component({
   selector: 'app-form-date-picker',
@@ -16,86 +18,23 @@ const moment = moment_;
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => FormDatePickerComponent),
       multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => FormDatePickerComponent),
-      multi: true
     }
   ]
 })
-export class FormDatePickerComponent implements ControlValueAccessor, OnInit {
-  @Input() splitCol = false;
-  @Input() modalForm = false;
-  @Input() isRequired = false;
-  @Input() name = 'datepicker';
-  @Input() formLabel = 'datepicker';
-  @Input() setAutofocus = false;
+export class FormDatePickerComponent extends BaseTextControlComponent
+  implements AfterContentInit {
+  @Input() max = '2100-12-31';
+  @Input() min = '1900-01-01';
+  @Input() maxWidth = 500;
 
-  value: Date = null;
-  constructor() {}
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
-  groupClass = 'form-group row';
-  labelClass = 'col-sm-4 col-md-3 col-lg-2 col-form-label';
-  eleClass = 'col-sm-6 col-md-5';
-
-  ngOnInit(): void {
-    if (this.modalForm) {
-      this.labelClass = 'col-3 col-form-label';
-      this.eleClass = 'col-8';
-    } else if (this.splitCol) {
-      this.labelClass = 'col-sm-5 col-form-label';
-      this.eleClass = 'col-sm-7';
+  ngAfterContentInit(): void {
+    super.ngAfterContentInit();
+    if (this.control) {
+      this.control.setValidators(this.validators);
     }
   }
-
-  onChange(changedDate: Date): void {
-    console.log('changedDate');
-    console.log(changedDate);
-    if (
-      changedDate === undefined ||
-      changedDate === null ||
-      changedDate.toString() === 'Invalid Date'
-    ) {
-      this.propagateChange(null);
-    } else {
-      const day = moment(changedDate).format('DD'); // day
-      const month = moment(changedDate).format('MM'); // month
-
-      const date = `${changedDate.getFullYear()}-${month}-${day}T00:00:00.000`;
-      this.propagateChange(date);
-    }
-  }
-
-  get isValid(): boolean {
-    if (
-      this.isRequired &&
-      (!this.value || this.value.toString() === 'Invalid Date')
-    ) {
-      return false;
-    }
-    return true;
-  }
-
-  private propagateChange = (_: any) => {};
-
-  writeValue(date: string): void {
-    console.log('date');
-    console.log(date);
-    if (date && moment(date, moment.ISO_8601, true).isValid()) {
-      this.value = new Date(date);
-    } else {
-      this.value = null;
-    }
-  }
-
-  public validate() {
-    return this.isValid ? null : { stringError: { valid: false } };
-  }
-
-  registerOnChange(fn: any): void {
-    this.propagateChange = fn;
-  }
-  registerOnTouched(_fn: any): void {}
-  setDisabledState?(_isDisabled: boolean): void {}
 }

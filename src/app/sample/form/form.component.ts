@@ -30,9 +30,9 @@ export class FormComponent implements OnInit {
   }
 
   initData() {
-    this.email1 = 'ghib3003@bigpond.com';
+    this.email1 = 'amit@abc.com';
     this.email2 = undefined;
-    this.url1 = 'https://resme.ddns.net/';
+    this.url1 = 'https://www.google.com/';
     this.url2 = undefined;
     this.text1 = 'Required text box';
     this.text2 = undefined;
@@ -43,7 +43,7 @@ export class FormComponent implements OnInit {
     this.number1 = '1234';
     this.number2 = undefined;
     this.number3 = undefined;
-    this.date2str = '1979-07-24T14:00:00.000';
+    this.date2str = '1979-07-24';
     this.check1 = false;
   }
 }
