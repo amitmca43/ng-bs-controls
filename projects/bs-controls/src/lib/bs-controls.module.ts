@@ -16,11 +16,6 @@ import { FormDatePickerComponent } from './components/form-date-picker/form-date
 import { FormListSelectComponent } from './components/form-list-select/form-list-select.component';
 import { FormTextNumericComponent } from './components/form-text-numeric/form-text-numeric.component';
 
-import {
-  TimepickerModule,
-  BsDatepickerModule,
-  TypeaheadModule
-} from 'ngx-bootstrap';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NumberInputDirective } from './directives/number-input.directive';
@@ -43,12 +38,8 @@ import { NumberInputDirective } from './directives/number-input.directive';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot(),
-    MatCheckboxModule,
     NgSelectModule,
-    NgxIntlTelInputModule,
-    TimepickerModule.forRoot(),
-    TypeaheadModule.forRoot()
+    NgxIntlTelInputModule
   ],
   exports: [
     NumberInputDirective,
