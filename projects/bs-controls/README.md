@@ -13,7 +13,7 @@ npm install ng-bs-controls --save
 Add BsControlsModule package to NgModules imports:
 
 ```
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsControlsModule } from 'ng-bs-controls';
 
 @NgModule({
 ...
