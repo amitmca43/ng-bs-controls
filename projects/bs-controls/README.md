@@ -1,24 +1,44 @@
-# BsControls
+# Angular Bootstrap Controls
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+This library contains coomonly used bootstrap controls as Angular components.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project bs-controls` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project bs-controls`.
-> Note: Don't forget to add `--project bs-controls` or else it will be added to the default project in your `angular.json` file. 
+Install `ng-bs-controls` from `npm`:
 
-## Build
+```bash
+npm install ng-bs-controls --save
+```
 
-Run `ng build bs-controls` to build the project. The build artifacts will be stored in the `dist/` directory.
+Add BsControlsModule package to NgModules imports:
 
-## Publishing
+```
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-After building your library with `ng build bs-controls`, go to the dist folder `cd dist/bs-controls` and run `npm publish`.
+@NgModule({
+...
+imports: [BsControlsModule,...]
+...
+})
+```
 
-## Running unit tests
+Use needed components in your forms, you can refer to sample form in <a href="https://github.com/amitmca43/ng-bs-controls">ng-bs-controls github</a>
 
-Run `ng test bs-controls` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+<app-form-text-email
+[(ngModel)]="email"
+[formLabel]="'Email'"
+[name]="'email'"
+[isRequired]="true"
+[setAutofocus]="true">
+</app-form-text-email>
+```
 
-## Further help
+You will need bootstrap styles:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- `Bootstrap 4`
+
+```
+<!--- index.html -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+```
