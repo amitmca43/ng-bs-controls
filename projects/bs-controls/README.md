@@ -45,4 +45,4 @@ You will need bootstrap styles:
 
 ### License
 
-[MIT](https://github.com/amitmca43/ng-bs-controls/blob/master/LICENSE)
+[MIT](https://github.com/amitmca43/ng-bs-controls/blob/master/projects/bs-controls/LICENSE)
