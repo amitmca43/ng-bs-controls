@@ -42,3 +42,7 @@ You will need bootstrap styles:
 <!--- index.html -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 ```
+
+### License
+
+[MIT](https://github.com/amitmca43/ng-bs-controls/blob/master/LICENSE)
