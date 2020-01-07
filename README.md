@@ -1,6 +1,6 @@
 # Angular Bootstrap Controls
 
-This library contains coomonly used bootstrap controls as Angular components.
+This library contains commonly used bootstrap controls as Angular components.
 
 ## Installation
 
