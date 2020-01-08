@@ -1,6 +1,7 @@
 # Angular Bootstrap Controls
 
 This library contains commonly used bootstrap controls as Angular components.
+Here is <a href="https://stackblitz.com/edit/ng-bs-controls-sample?embed=1&file=app/app.component.html">live stackBlitz sample</a>
 
 ## Installation
 
