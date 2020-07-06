@@ -70,7 +70,6 @@ export abstract class BaseTextControlComponent
 
   onChange(event: any) {
     this.updateValue(event);
-    console.log(event);
   }
 
   onBlur(event: any) {

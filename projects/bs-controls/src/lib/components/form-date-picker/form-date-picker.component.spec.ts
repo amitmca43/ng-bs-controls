@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormDatePickerComponent } from '../form-audit-label/form-date-picker.component';
+import { FormDatePickerComponent } from './form-date-picker.component';
 
 describe('FormDatePickerComponent', () => {
   let component: FormDatePickerComponent;
@@ -8,9 +8,8 @@ describe('FormDatePickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormDatePickerComponent ]
-    })
-    .compileComponents();
+      declarations: [FormDatePickerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

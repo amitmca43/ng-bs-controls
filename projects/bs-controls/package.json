@@ -2,16 +2,21 @@
   "name": "ng-bs-controls",
   "version": "1.0.5",
   "peerDependencies": {
-    "@angular/animations": "~8.2.14",
+    "@angular/animations": "~10.0.2",
     "@angular/cdk": "^8.1.1",
-    "@angular/common": "~8.2.14",
-    "@angular/compiler": "~8.2.14",
-    "@angular/core": "~8.2.14",
-    "@angular/forms": "~8.2.14",
+    "@angular/common": "~10.0.2",
+    "@angular/compiler": "~10.0.2",
+    "@angular/core": "~10.0.2",
+    "@angular/forms": "~10.0.2",
+    "@angular/platform-browser": "~10.0.2",
+    "@angular/platform-browser-dynamic": "~10.0.2",
     "@fortawesome/fontawesome-free": "^5.8.1",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "rxjs": "^6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.2"
   },
   "keywords": [
     "Angular",
@@ -19,5 +24,8 @@
     "Bootstrap",
     "Bootstrap 4",
     "Angular Bootstrap"
-  ]
+  ],
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
 }
